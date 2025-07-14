@@ -1,0 +1,297 @@
+body {
+  background: linear-gradient(120deg, #e1f5fe 0%, #90caf9 100%);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: #0d47a1;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.form-outer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-auth {
+  width: 100%;
+  max-width: 410px;
+  padding: 36px 28px 28px 28px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(13,71,161,0.10), 0 2px 12px #90caf9;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border: 2.5px solid #90caf9;
+  transition: box-shadow 0.3s, border 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.form-auth:hover {
+  box-shadow: 0 12px 40px rgba(13,71,161,0.15), 0 4px 18px #42a5f5;
+  border-color: #42a5f5;
+}
+
+.form-auth h2 {
+  color: #0d47a1;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  font-size: 2rem;
+}
+
+.input-group {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #90caf9;
+  border-radius: 7px;
+  background: #e1f5fe;
+  color: #1976d2;
+  font-size: 1.08rem;
+  transition: border-color 0.22s, box-shadow 0.22s, background 0.22s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #0d47a1;
+  box-shadow: 0 0 8px #42a5f5;
+  background: #fff;
+  outline: none;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  height: 100%;
+}
+
+.toggle-password:focus {
+  outline: none;
+}
+
+.toggle-password svg {
+  display: block;
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #90caf9;
+  transition: background 0.22s, box-shadow 0.22s;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+
+.primary-btn:disabled {
+  background: #b6d4fa;
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.primary-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #0d47a1 0%, #1976d2 100%);
+  box-shadow: 0 4px 16px #42a5f5;
+}
+
+.auth-message {
+  margin-top: 13px;
+  text-align: center;
+  font-size: 1.07rem;
+  font-weight: 500;
+  color: #d32f2f;
+  background: #e1f5fe;
+  border-left: 4px solid #42a5f5;
+  border-radius: 6px;
+  padding: 8px 0;
+  min-height: 24px;
+  animation: fadein 0.6s;
+}
+
+.auth-message.success {
+  color: #1976d2;
+  background: #e1f5fe;
+  border-left: 4px solid #1976d2;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 1rem;
+  /* Add spacing below if needed */
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #1976d2;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 0;
+  margin: 0 0 0 2px;
+  transition: color 0.2s;
+  display: inline;
+}
+
+.link-btn:hover,
+.link-btn:focus {
+  color: #0d47a1;
+  outline: none;
+}
+
+/* Finance-themed SVG decorations for the form (optional) */
+.finance-decor {
+  position: absolute;
+  top: -38px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.coin-svg {
+  margin-left: -18px;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 8px #ffd60044);
+}
+
+.graph-svg {
+  margin-right: -18px;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 8px #42a5f544);
+}
+
+.form-auth {
+  position: relative; /* Ensure the SVGs are positioned relative to the form */
+  z-index: 1;
+}
+
+/* Finance-themed background decorations */
+.finance-bg-decor {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  background: linear-gradient(120deg, #e1f5fe 0%, #90caf9 100%);
+}
+
+.finance-bg-decor::before,
+.finance-bg-decor::after {
+  content: "";
+  position: absolute;
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.finance-bg-decor::before {
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="240" cy="260" rx="180" ry="110" fill="%2390caf9"/><ellipse cx="120" cy="120" rx="60" ry="60" fill="%2342a5f5"/><rect x="200" y="80" width="80" height="30" rx="15" fill="%23ffd600"/><text x="240" y="105" font-size="32" fill="%230d47a1" font-family="Segoe UI" text-anchor="middle" font-weight="bold">$</text></svg>');
+}
+
+.finance-bg-decor::after {
+  bottom: 0;
+  right: 0;
+  width: 520px;
+  height: 320px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="520" height="320" viewBox="0 0 520 320" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="40,260 120,180 220,230 330,120 470,40" fill="none" stroke="%231976d2" stroke-width="8"/><circle cx="40" cy="260" r="16" fill="%2342a5f5"/><circle cx="120" cy="180" r="12" fill="%2342a5f5"/><circle cx="220" cy="230" r="14" fill="%2342a5f5"/><circle cx="330" cy="120" r="10" fill="%2342a5f5"/><circle cx="470" cy="40" r="18" fill="%2342a5f5"/><rect x="400" y="250" width="60" height="28" rx="10" fill="%23ffd600"/><text x="430" y="270" font-size="22" fill="%230d47a1" font-family="Segoe UI" text-anchor="middle" font-weight="bold">$</text></svg>');
+}
+
+/* Extra SVGs for more finance vibes */
+.finance-bg-decor-piggy {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 180px;
+  height: 130px;
+  opacity: 0.14;
+  z-index: 2;
+  pointer-events: none;
+  background: none;
+}
+.finance-bg-decor-dollar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 160px;
+  height: 110px;
+  opacity: 0.13;
+  z-index: 2;
+  pointer-events: none;
+  background: none;
+}
+.finance-bg-decor-coins {
+  position: fixed;
+  left: 24vw;
+  bottom: 0;
+  width: 90px;
+  height: 90px;
+  opacity: 0.14;
+  z-index: 2;
+  pointer-events: none;
+}
+.finance-bg-decor-arrow {
+  position: fixed;
+  right: 18vw;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  opacity: 0.11;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .finance-bg-decor-piggy,
+  .finance-bg-decor-dollar,
+  .finance-bg-decor-coins,
+  .finance-bg-decor-arrow {
+    display: none;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
+}

@@ -1,0 +1,200 @@
+.dashboard-bg {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 0 32px 0;
+  z-index: 1;
+}
+.dashboard-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(13,71,161,0.10), 0 2px 12px #90caf9;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 950px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  z-index: 2;
+}
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.dashboard-header h1 {
+  color: #0d47a1;
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+.dashboard-subtitle {
+  color: #1976d2;
+  font-size: 1.07rem;
+  margin-top: 6px;
+}
+.dashboard-logout {
+  background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dashboard-logout:hover {
+  background: linear-gradient(90deg, #0d47a1 0%, #1976d2 100%);
+}
+.dashboard-cards {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.dashboard-card {
+  flex: 1;
+  min-width: 160px;
+  background: #e1f5fe;
+  border-radius: 10px;
+  padding: 20px 18px;
+  box-shadow: 0 2px 8px #90caf944;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.account-name {
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.account-balance {
+  color: #0d47a1;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+.dashboard-summary {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  margin: 0 -18px;
+}
+.dashboard-summary-item {
+  flex: 1;
+  background: #90caf9;
+  border-radius: 10px;
+  padding: 18px 0;
+  text-align: center;
+  margin: 0 18px;
+}
+.summary-label {
+  color: #0d47a1;
+  font-weight: 500;
+  font-size: 1.07rem;
+}
+.summary-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+.summary-value.income { color: #16a085; }
+.summary-value.expenses { color: #d32f2f; }
+.summary-value.savings { color: #1976d2; }
+.dashboard-actions {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+}
+.action-btn {
+  background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.action-btn:hover {
+  background: linear-gradient(90deg, #0d47a1 0%, #1976d2 100%);
+}
+.dashboard-main {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.dashboard-table-section {
+  flex: 2;
+  min-width: 320px;
+}
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #e1f5fe;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.dashboard-table th, .dashboard-table td {
+  padding: 10px 12px;
+  text-align: left;
+}
+.dashboard-table th {
+  background: #90caf9;
+  color: #0d47a1;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.dashboard-table tr:nth-child(even) {
+  background: #f6fbff;
+}
+.dashboard-table td.neg {
+  color: #d32f2f;
+  font-weight: 600;
+}
+.dashboard-table td.pos {
+  color: #16a085;
+  font-weight: 600;
+}
+.dashboard-pie-section {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pie-legend {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+  width: 100%;
+}
+.pie-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: #1976d2;
+}
+.pie-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  margin-right: 4px;
+}
+@media (max-width: 1000px) {
+  .dashboard-container { max-width: 99vw; }
+  .dashboard-main { flex-direction: column; gap: 22px; }
+}
+@media (max-width: 700px) {
+  .dashboard-cards, .dashboard-summary, .dashboard-actions { flex-direction: column; gap: 10px; }
+  .dashboard-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .dashboard-main { gap: 10px; }
+}
