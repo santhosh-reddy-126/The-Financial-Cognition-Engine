@@ -22,7 +22,7 @@ async function checkDbConnection() {
   if (error) {
     console.error('❌ Supabase DB connection failed:', error.message);
   } else {
-    console.log('✅ Supabase DB connected! Sample user:', data);
+    console.log('✅ Supabase DB connected!');
   }
 }
 checkDbConnection();

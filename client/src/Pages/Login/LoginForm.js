@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
 import "./AuthForm.css";
 
 function EyeIcon({ open }) {
@@ -6,14 +8,14 @@ function EyeIcon({ open }) {
   // If `open` is false, show a regular eye (password hidden)
   return open ? (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-label="Hide password">
-      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none"/>
-      <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none"/>
-      <line x1="4" y1="20" x2="20" y2="4" stroke="#1976d2" strokeWidth="2"/>
+      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none" />
+      <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none" />
+      <line x1="4" y1="20" x2="20" y2="4" stroke="#1976d2" strokeWidth="2" />
     </svg>
   ) : (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-label="Show password">
-      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none"/>
-      <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none"/>
+      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none" />
+      <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none" />
     </svg>
   );
 }
@@ -22,6 +24,9 @@ function EyeIcon({ open }) {
 export default function LoginForm({ onSwitch, onSuccess }) {
   // State to store form input values (email and password)
   const [form, setForm] = useState({ email: "", password: "" });
+
+  //use navigate for navigation
+  const navigate = useNavigate();
 
   // State to display messages to the user (e.g., errors, success)
   const [message, setMessage] = useState("");
@@ -82,6 +87,7 @@ export default function LoginForm({ onSwitch, onSuccess }) {
 
         // If a success callback is provided, call it with the user data
         if (onSuccess) onSuccess(data.user);
+        navigate("/home"); // Redirect after login
       }
     } catch (error) {
       // Handle network or unexpected errors
@@ -153,14 +159,11 @@ export default function LoginForm({ onSwitch, onSuccess }) {
         {/* Switch to registration form link */}
         <p className="switch-link">
           Don't have an account?{" "}
-          <button
-            type="button"
-            className="link-btn"
-            onClick={onSwitch}
-          >
+          <Link to="/register" className="link-btn">
             Register
-          </button>
+          </Link>
         </p>
+
       </form>
     </div>
   );

@@ -1,7 +1,8 @@
 // Import React's useState hook for managing component state
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 // Import component-specific styles
-import "./AuthForm.css";
+import "../Login/AuthForm.css";
 
 // Function to determine password strength
 function getPasswordStrength(password) {
@@ -19,6 +20,10 @@ function getPasswordStrength(password) {
 export default function RegisterForm({ onSwitch, onSuccess }) {
   // Track input values for email and password
   const [form, setForm] = useState({ email: "", password: "" });
+
+  //use navigate for homepage navigation
+  const navigate = useNavigate();
+
 
   // Message for feedback (success, error, etc.)
   const [message, setMessage] = useState("");
@@ -78,6 +83,7 @@ export default function RegisterForm({ onSwitch, onSuccess }) {
         setMessage("Registration successful! You can now log in.");
         setForm({ email: "", password: "" });
         if (onSuccess) onSuccess(); // Trigger success callback if provided
+        setTimeout(() => navigate("/login"), 1500); // Redirect after 1.5s
       } else {
         // Server returned an error
         setMessage(`Error: ${data.error || "Registration failed."}`);
@@ -124,10 +130,10 @@ export default function RegisterForm({ onSwitch, onSuccess }) {
                 strength === 1
                   ? "#e74c3c"   // Red for weak
                   : strength === 2
-                  ? "#f1c40f"   // Yellow for medium
-                  : strength === 3
-                  ? "#16a085"   // Green for strong
-                  : undefined,
+                    ? "#f1c40f"   // Yellow for medium
+                    : strength === 3
+                      ? "#16a085"   // Green for strong
+                      : undefined,
             }}
           />
 
@@ -143,14 +149,14 @@ export default function RegisterForm({ onSwitch, onSuccess }) {
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
               {showPassword ? (
                 <>
-                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none"/>
-                  <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none"/>
-                  <line x1="4" y1="20" x2="20" y2="4" stroke="#1976d2" strokeWidth="2"/>
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none" />
+                  <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none" />
+                  <line x1="4" y1="20" x2="20" y2="4" stroke="#1976d2" strokeWidth="2" />
                 </>
               ) : (
                 <>
-                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none"/>
-                  <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none"/>
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#1976d2" strokeWidth="2" fill="none" />
+                  <circle cx="12" cy="12" r="3.5" stroke="#1976d2" strokeWidth="2" fill="none" />
                 </>
               )}
             </svg>
@@ -194,10 +200,9 @@ export default function RegisterForm({ onSwitch, onSuccess }) {
         {/* Switch to login form link */}
         <p className="switch-link">
           Already have an account?{" "}
-          <button type="button" className="link-btn" onClick={onSwitch}>
-            Login
-          </button>
+          <Link to="/login" className="link-btn">Login</Link>
         </p>
+
       </form>
     </div>
   );
